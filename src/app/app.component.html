@@ -1,0 +1,11 @@
+<app-header
+  (orderList)="orderLinkClicked($event)"
+></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-order-list *ngIf="showOrder"></app-order-list>
+      <!-- <app-recipe-detail ></app-recipe-detail>  -->
+    </div>
+  </div>
+</div>
