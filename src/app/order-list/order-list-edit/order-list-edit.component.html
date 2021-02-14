@@ -58,6 +58,8 @@
                     <button class="btn btn-primary" type="button">Clear</button>
                 </div>
             </div>
+            <hr>
+            <p *ngIf="orderIncomplete">{{ message }}</p>
         </form>
     </div>
 </div>
