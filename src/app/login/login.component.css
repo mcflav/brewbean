@@ -1,9 +1,11 @@
 h2{
     margin-top: 100px;
-    text-align: center;
 }
 
 .form-group{
     width: 200px;
-    margin: 0 auto;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
 }
