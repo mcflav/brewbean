@@ -20,11 +20,12 @@
             email
             #email="ngModel">
             <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
+            <span *ngIf="emailExsist">This email account is already registered. Please use a different email address.</span>
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
           <input
-            type="text"
+            type="password"
             id="password"
             class="form-control"
             ngModel
@@ -32,6 +33,19 @@
             required
             #password="ngModel">
             <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a password!</span>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword"> Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            ngModel
+            name="confirmPassword"
+            required
+            #confirmPassword="ngModel">
+            <span class="help-block" *ngIf="!confirmPassword.valid && confirmPassword.touched">Please confirm your password!</span>
+            <span *ngIf="!passMatch">Your passwords do not match! Please re-enter them.</span>
         </div>
         <div class="form-group">
           <label for="firstname">First Name:</label>
@@ -73,6 +87,7 @@
             <p>Email: {{ user.email }}</p>
             <p>Firstname: {{ user.firstname }}</p>
             <p>Lastname: {{ user.lastname }}</p>
+            <p>Password: {{ user.password }}</p>
           </div>
         </div>
     </div>
