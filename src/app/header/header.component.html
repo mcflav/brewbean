@@ -1,23 +1,16 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href=# class="navbar-brand">Brewbean's Coffee</a>
+          <!-- <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed"> -->
+            <!-- <span class="icon-bar" *ngFor="let iconbar of [1, 2, 3]"></span>
+        </button> -->
+            <a routerLink="/" class="navbar-brand">Brewbean</a>
         </div>
-
-        <div class="collapse navbar-collapse">
+        <div>
             <ul class="nav navbar-nav">
-                <li><a href="#" (click)="orderLinkClick()">Order Items</a></li>
-                <li><a href="#">Log Out</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown" appDropdown>
-                    <a href="#" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Save</a></li>
-                        <li><a href="#">Fetch</a></li>
-                    </ul>
-                </li>
+                <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
             </ul>
         </div>
+        <router-outlet></router-outlet>
     </div>
-</nav>
+   </nav>

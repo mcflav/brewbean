@@ -7,9 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'brewbean-order';
-  showOrder = false;
-
-  orderLinkClicked(eventData: {order: string}){
-    this.showOrder = !this.showOrder;
-  }
+ 
+  
 }

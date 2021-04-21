@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsersService } from '../services/users.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,16 @@ export class LoginComponent implements OnInit {
   registeredUsers = [];
   user = {
     email: '',
-    password: ''
+    password: '',
+    firstname: '',
+    lastname: ''
   }
   validLogin = false;
   showInvalidMessage = false;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,13 +38,16 @@ export class LoginComponent implements OnInit {
               this.registeredUsers[i].password === this.user.password){
                 this.validLogin = true;
                 this.showInvalidMessage = false;
+                this.user.firstname = this.registeredUsers[i].firstname;
+                this.user.lastname = this.registeredUsers[i].lastname;
+                this.router.navigate(['../order-items', this.user.email, this.user.firstname, this.user.lastname], {relativeTo: this.route})
             }else{
               this.validLogin = false;
               this.showInvalidMessage = true;
             }
-            
     }
     console.log(this.validLogin);
+    console.log(this.showInvalidMessage);
   }
 
 }
