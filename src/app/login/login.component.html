@@ -41,13 +41,11 @@
             <button
               class="btn btn-primary"
               type="submit"
-              [disabled]="!f.valid">Login
+              [disabled]="!f.valid"
+              >Login
             </button> 
             </div>
           </form>
-          <div *ngIf="validLogin">
-              <p>You have successfully logged in!</p>
-          </div>
           <div *ngIf="showInvalidMessage">
             <p>You have entered an invalid email or password!</p>
         </div>
