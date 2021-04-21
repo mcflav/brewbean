@@ -1,1 +1,1 @@
-# brewbean-order
+This is a sigle page coffee shop website created in Angular. It uses TD-forms (template driven) and allows the user to order a cup of coffee and associated condiments for the coffee. Currently it does not store the data in a backend database (g.e. MongoDB). The data is stored in arrays. As the project is updated it will contain a backend database using node.js. 
