@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { OrderService } from '../services/order.service';
+import { Order } from '../shared/order.model';
 
 @Component({
   selector: 'app-order-items',
@@ -12,18 +14,25 @@ export class OrderItemsComponent implements OnInit {
   user: {email: string, firstname: string, lastname: string};
   order = {
     coffee: '',
-    quantity: '',
-    creamers: '',
-    toppings: '',
-    syrups: '',
-    sweeteners: ''
-  }
+    creamer: '',
+    topping: '',
+    syrup: '',
+    sweetener: '',
+    price: 0,
+    quantity: 0,
+    subTotal: 0
+  } 
+  getOrders = [];
+  id: number;
   submitted = false;
-  quantityNegative = false;
   total = 0;
   price = 4.75;
+  viewOrder = false;
+  newOrder;
+  showOrder = false;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+        private orderService: OrderService) { }
 
   ngOnInit(): void {
       this.user = {
@@ -34,21 +43,16 @@ export class OrderItemsComponent implements OnInit {
   }
   
   onSubmit(){
-    if(this.orderForm.value.quantity <= 0){
-      this.quantityNegative = true;
-      this.submitted = false;
-    } else {
-      this.quantityNegative = false;
-      this.submitted = true;
-      this.order.coffee = this.orderForm.value.coffee;
-      this.order.quantity = this.orderForm.value.quantity;
-      this.order.creamers = this.orderForm.value.creamers;
-      this.order.toppings = this.orderForm.value.toppings;
-      this.order.syrups = this.orderForm.value.syrups;
-      this.order.sweeteners = this.orderForm.value.sweeteners; 
-      this.total = this.price * this.orderForm.value.quantity;
-    }
-       
+    this.submitted = true;
+    this.viewOrder = true;
+      this.newOrder = new Order(this.user.email, this.orderForm.value.coffee, this.orderForm.value.creamer, this.orderForm.value.topping, this.orderForm.value.syrup, this.orderForm.value.sweetener, this.price, Number(this.orderForm.value.quantity));
+      this.orderService.addOrder(this.newOrder);
   }
 
+  onViewOrder(){
+    this.submitted = false;
+    this.showOrder = true;
+    this.getOrders = this.orderService.getOrders(this.user.email);
+    console.log(this.getOrders);
+  }
 }

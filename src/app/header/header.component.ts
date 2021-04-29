@@ -7,13 +7,5 @@ import { Component, Output, EventEmitter } from "@angular/core";
 })
 
 export class HeaderComponent {
-    order = "";
-
-    @Output() orderList = new EventEmitter<{order: string}>();
     
-    orderLinkClick(){
-      this.orderList.emit({
-          order: "order"
-      });
-    }
 }

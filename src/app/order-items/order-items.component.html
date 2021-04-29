@@ -41,11 +41,11 @@
                     id="quantity"
                     class="form-control"
                     required
+                    pattern="^[1-9]+[0-9]*$"
                     ngModel
                     name="quantity"
                     #quantity="ngModel">
                     <span class="help-block" *ngIf="!quantity.valid && quantity.touched">Please enter a quantity!</span>
-                    <span class="help-block" *ngIf="quantityNegative">Please enter a quantity greater than zero!</span>
                 </div>
             </section>
             <hr>
@@ -57,7 +57,7 @@
                         class="form-control"
                         ngModel
                         required
-                        name="creamers"
+                        name="creamer"
                         #creamers="ngModel">
                         <option value="none">No Creamer</option>
                         <option value="nonfatLight">Nonfat Milk (Light Splash)</option>
@@ -89,7 +89,7 @@
                         class="form-control"
                         ngModel
                         required
-                        name="toppings"
+                        name="topping"
                         #toppings="ngModel">
                         <option value="none">No Topping</option>
                         <option value="caramel">Caramel Drizzle</option>
@@ -108,7 +108,7 @@
                         class="form-control"
                         ngModel
                         required
-                        name="syrups"
+                        name="syrup"
                         #syrups="ngModel">
                         <option value="none">No Syrup</option>
                         <option value="caramel">Caramel Syrup</option>
@@ -129,7 +129,7 @@
                         class="form-control"
                         ngModel
                         required
-                        name="sweeteners"
+                        name="sweetener"
                         #sweeteners="ngModel">
                         <option value="none">No Sweetener</option>
                         <option value="sugar">Sugar</option>
@@ -147,20 +147,32 @@
               [disabled]="!f.valid">Submit Order
             </button> 
           </div>
+          <div class="form-group">
+            <button
+              class="btn btn-primary"
+              type="button"
+              (click)="onViewOrder()"
+              [disabled]="!viewOrder">View Order
+            </button> 
+          </div>
           </form>
           <div class="row">
-            <div class="col-xs-12" *ngIf="submitted">
-              <h3>Thank you for Order!!</h3>
+            <div class="col-xs-12">
+              <h3 *ngIf="submitted">Thank you for Order!!</h3>
               <hr>
-              <h4>Order Summary</h4>
-              <hr>
-              <p>Coffee: {{ order.coffee }}</p>
-              <p>Quantity: {{ order.quantity }}</p>
-              <p>Creamers: {{ order.creamers }}</p>
-              <p>Toppings: {{ order.toppings }}</p>
-              <p>Syrups: {{ order.syrups }}</p>
-              <p>Sweeteners: {{ order.sweeteners}}</p>
-              <p>Order Total: {{ total }}</p>
+              <div *ngIf="showOrder">
+                <h4>Order Summary</h4>
+                <div *ngFor="let order of getOrders">
+                    <hr>
+                    <p>Coffee: {{ order.coffee }}</p>
+                    <p>Quantity: {{ order.quantity }}</p>
+                    <p>Creamers: {{ order.creamer }}</p>
+                    <p>Toppings: {{ order.topping }}</p>
+                    <p>Syrups: {{ order.syrup }}</p>
+                    <p>Sweeteners: {{ order.sweetener }}</p>
+                    <p>Order Total: {{ order.subTotal }}</p>
+                </div>
+              </div>
             </div>
           </div>
       </div>

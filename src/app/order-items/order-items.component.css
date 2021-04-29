@@ -1,3 +1,7 @@
+h1,h2{
+    color: blue;
+}
+
 .form-group{
     
     display: flex;

@@ -1,29 +1,36 @@
 import { Order } from '../shared/order.model';
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export class OrderService{
     message;
-    orderChanged = new EventEmitter<Order[]>();
+    orderChanged = new Subject<Order[]>();
 
-    private orders: Order[] = [
-        new Order('columbia', 'caf', 'small', 1, 2.55, 1 * 2.55),
-        new Order('french roast', 'decaf', 'medium', 2, 3.55, 2 * 3.55),
-        new Order('breakfast blend', 'caf', 'large', 3, 4.55, 3 * 4.55)
-      ];
+    private orders: Order[] = [];
+    private newOrder = [];
 
-      getOrders(){
-          return this.orders.slice();
+      getOrders(email: string){
+        //   return this.orders.slice();
+        this.newOrder = this.orders.filter(email => email === email);
+        console.log("results are " + this.newOrder.slice());
+        return this.newOrder.slice();
       }
 
-       addOrder(order: Order){
-           this.orders.push(order);
-           this.orderChanged.emit(this.orders.slice());
+      getOrder(index: number){
+          return this.orders[index];
+      }
+
+      addOrder(order: Order){
+        this.orders.push(order);
+        this.orderChanged.next(this.orders.slice());
        }
 
-       noOrderMessage(){
-           return this.message = "Please complete all fields to add an order.";
-       }
+      updateOrder(index: number, newOrder: Order){
+          this.orders[index] = newOrder;
+          this.orderChanged.next(this.orders.slice());
+      }
 
-
-
+      deleteOrder(index: number){
+          this.orders.splice(index, 1);
+          this.orderChanged.next(this.orders.slice());
+      }
 }
