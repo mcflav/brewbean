@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { UsersService } from './services/users.service';
+import { OrderService } from './services/order.service';
 import { OrderItemsComponent } from './order-items/order-items.component';
 
 @NgModule({
@@ -29,7 +30,7 @@ import { OrderItemsComponent } from './order-items/order-items.component';
     ShowHidePasswordModule,
     AppRoutingModule
   ],
-  providers: [UsersService],
+  providers: [UsersService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

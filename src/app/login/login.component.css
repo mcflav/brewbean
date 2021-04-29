@@ -1,5 +1,14 @@
 h2{
+    color: #FB2C00;
     margin-top: 100px;
+}
+
+label{
+    color:blue;
+}
+
+show-hide-password{
+    color:blue;
 }
 
 .form-group{
