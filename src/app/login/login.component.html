@@ -31,9 +31,10 @@
               ngModel
               name="password"
               required
-              #password="ngModel"><hr>Show Password
-            </show-hide-password>
+              #password="ngModel">
               <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a password!</span>
+              <hr>Show Password
+            </show-hide-password>
           </div>
         </div>
           <hr>

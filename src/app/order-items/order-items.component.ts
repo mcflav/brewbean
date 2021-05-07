@@ -12,23 +12,25 @@ import { Order } from '../shared/order.model';
 export class OrderItemsComponent implements OnInit {
   @ViewChild('f') orderForm: NgForm;
   user: {email: string, firstname: string, lastname: string};
-  order = {
-    coffee: '',
-    creamer: '',
-    topping: '',
-    syrup: '',
-    sweetener: '',
-    price: 0,
-    quantity: 0,
-    subTotal: 0
-  } 
+  // order = {
+  //   coffee: '',
+  //   creamer: '',
+  //   topping: '',
+  //   syrup: '',
+  //   sweetener: '',
+  //   price: 0,
+  //   quantity: 0,
+  //   subTotal: 0
+  // } 
   getOrders = [];
+  userOrder = [];
   id: number;
   submitted = false;
   total = 0;
   price = 4.75;
   viewOrder = false;
   newOrder;
+  getOrder;
   showOrder = false;
 
   constructor(private route: ActivatedRoute,
@@ -52,7 +54,14 @@ export class OrderItemsComponent implements OnInit {
   onViewOrder(){
     this.submitted = false;
     this.showOrder = true;
-    this.getOrders = this.orderService.getOrders(this.user.email);
-    console.log(this.getOrders);
+    this.getOrders = this.orderService.getOrders();
+    
+    for(var i = 0; i < this.getOrders.length; i++){
+      if(this.getOrders[i].email === this.user.email){
+          this.getOrder = new Order(this.getOrders[i].email, this.getOrders[i].coffee, this.getOrders[i].creamer,
+            this.getOrders[i].topping, this.getOrders[i].syrup, this.getOrders[i].sweetener, this.getOrders[i].price, this.getOrders[i].quantity);
+          this.userOrder.push(this.getOrder);
+      }
+}
   }
 }

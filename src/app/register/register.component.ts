@@ -10,7 +10,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RegisterComponent {
   @ViewChild('f') registerForm: NgForm;
-  submitted = false;
   passMatch = true;
   user = {
     email: '',
@@ -31,7 +30,6 @@ export class RegisterComponent {
    }
 
   onSubmit(){
-
     this.user.password = this.registerForm.value.password;
     this.user.confirmPassword = this.registerForm.value.confirmPassword;
     this.user.email = this.registerForm.value.email;
@@ -41,28 +39,24 @@ export class RegisterComponent {
     this.registeredUsers = this.usersService.getUsers();
             for(var i = 0; i < this.registeredUsers.length; i++){
                     if(this.registeredUsers[i].email === this.user.email){
-                      console.log(this.user.email);
-                    this.emailExsist = true;
+                      this.emailExsist = true;
                     }else{
                       this.emailExsist = false;
                     }
             }
+    // if(this.user.password !== this.user.confirmPassword){
+    //       this.passMatch = false;
+    // }else if(this.emailExsist === false) {
+    //       this.passMatch = true;
+    //       this.usersService.addUser({email: this.user.email, firstname: this.user.firstname, lastname: this.user.lastname, password: this.user.password});
+    //       this.router.navigate(['../login'], {relativeTo: this.route})
+    // }  
     if(this.user.password !== this.user.confirmPassword){
-          this.passMatch = false;
-    }else if(this.emailExsist === false) {
-          this.submitted = true;
-          this.passMatch = true;
-          this.usersService.addUser({email: this.user.email, firstname: this.user.firstname, lastname: this.user.lastname, password: this.user.password});
-          this.router.navigate(['../login'], {relativeTo: this.route})
+      this.passMatch = false;
     }else {
-      this.submitted = false;
-      
-      
-    }
-
-         
-         
-    
+      this.passMatch = true;
+      this.usersService.addUser({email: this.user.email, firstname: this.user.firstname, lastname: this.user.lastname, password: this.user.password});
+      this.router.navigate(['../login'], {relativeTo: this.route});
+    }    
   }
-
 }
