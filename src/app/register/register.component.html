@@ -4,8 +4,7 @@
       <form (ngSubmit)="onSubmit()" #f="ngForm">
         <div
           class="form-group"
-          id="user-data"
-          >
+          id="user-data">
         <h2>Registration</h2>
         <hr>
         <div class="form-group">
@@ -74,22 +73,13 @@
         </div>
           <hr>
           <div class="form-group">
-          <button
-            class="btn btn-primary"
-            type="submit"
-            [disabled]="!f.valid">Register
-          </button> 
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="!f.valid">Register
+            </button> 
           </div>
-        </form>
-        <div class="row" *ngIf="submitted">
-          <div class="col-xs-12">
-            <h3>Thank you for registering!!</h3>
-            <p>Email: {{ user.email }}</p>
-            <p>Firstname: {{ user.firstname }}</p>
-            <p>Lastname: {{ user.lastname }}</p>
-            <p>Password: {{ user.password }}</p>
-          </div>
-        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -30,8 +30,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.user.email = this.loginForm.value.email;
     this.user.password = this.loginForm.value.password;
-    console.log(this.user.email);
-
+    
     this.registeredUsers = this.usersService.getUsers();
     for(var i = 0; i < this.registeredUsers.length; i++){
             if(this.registeredUsers[i].email === this.user.email &&
