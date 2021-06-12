@@ -1,0 +1,13 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+           <a routerLink="/" class="navbar-brand">Brewbean</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+            </ul>
+        </div> 
+        <router-outlet></router-outlet> 
+    </div>
+   </nav>
