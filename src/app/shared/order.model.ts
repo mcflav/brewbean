@@ -1,5 +1,4 @@
 export class Order {
-    public email: string;
     public coffee: string;
     public creamer: string;
     public topping: string;
@@ -7,10 +6,10 @@ export class Order {
     public sweetener: string;
     public price: number;
     public quantity: number;
-    public subTotal: number;
+    //public subTotal: number;
+    public user: string;
 
-    constructor(email: string, coffee: string, creamer: string, topping: string, syrup: string, sweetener: string, price: number, quantity: number){
-        this.email = email;
+    constructor(coffee: string, creamer: string, topping: string, syrup: string, sweetener: string, price: number, quantity: number, user: string){
         this.coffee = coffee;
         this.creamer = creamer;
         this.topping = topping;
@@ -18,6 +17,7 @@ export class Order {
         this.sweetener = sweetener;
         this.price = price;
         this.quantity = quantity;
-        this.subTotal = price * quantity;
+        //this.subTotal = price * quantity;
+        this.user = user;
     }
 }

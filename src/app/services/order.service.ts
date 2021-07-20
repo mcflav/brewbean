@@ -4,29 +4,38 @@ import { Subject } from 'rxjs';
 export class OrderService{
     orderChanged = new Subject<Order[]>();
 
-    private orders: Order[] = [];
+    private order: Order[] = [];
     private newOrder = [];
 
-      getOrders(){
-           return this.orders.slice();
-      }
+    setOrder(order) {
+      this.order = order;
+      this.orderChanged.next(this.order);
+    }
 
-      getOrder(index: number){
-          return this.orders[index];
-      }
+    getOrders(){
+       return this.order.slice();
+    }
 
-      addOrder(order: Order){
-        this.orders.push(order);
-        this.orderChanged.next(this.orders.slice());
-       }
+   //  getOrder(email: string){
+   //     for(var i = 0; i < this.order.length; i++){
+   //       if(this.order[i].email === email){
+   //          return this.order;
+   //       }
+   //     }
+   //  }
 
-      updateOrder(index: number, newOrder: Order){
-          this.orders[index] = newOrder;
-          this.orderChanged.next(this.orders.slice());
-      }
+    addOrder(order: Order){
+       this.order.push(order);
+       this.orderChanged.next(this.order.slice());
+    }
 
-      deleteOrder(index: number){
-          this.orders.splice(index, 1);
-          this.orderChanged.next(this.orders.slice());
-      }
+    updateOrder(index: number, newOrder: Order){
+       this.order[index] = newOrder;
+       this.orderChanged.next(this.order.slice());
+    }
+
+    deleteOrder(index: number){
+       this.order.splice(index, 1);
+       this.orderChanged.next(this.order.slice());
+    }
 }

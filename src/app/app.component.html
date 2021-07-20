@@ -1,14 +1,15 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
       <div class="navbar-header">
-         <a routerLink="/" class="navbar-brand">Brewbean</a>
+         <a id="title" routerLink="/" class="navbar-brand">Brewbean</a>
       </div>
       <div id="links">
           <ul class="nav navbar-nav">
-              <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-              <li role="presentation" routerLinkActive="active"><a routerLink="/register">Register</a></li>
-              <li role="presentation" routerLinkActive="active"><a routerLink="/login">Log In</a></li>
-              <li role="presentation" routerLinkActive="active"><a routerLink="/about">About</a></li>
+              <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuthenticated"><a id="links" routerLink="/">Home</a></li>
+              <li role="presentation" routerLinkActive="active" *ngIf="!isAuthenticated"><a id="links" routerLink="/register">Register</a></li>
+              <li role="presentation" routerLinkActive="active" *ngIf="!isAuthenticated"><a id="links" routerLink="/login">Log In</a></li>
+              <li role="presentation" routerLinkActive="active" *ngIf="isAuthenticated"><a id="links" routerLink="/about">About</a></li>
+              <li role="presentation" routerLinkActive="active" *ngIf="isAuthenticated"><a id="links" style="cursor: pointer" (click)="onLogOut()">Log Out</a></li>
           </ul>
       </div>
       <router-outlet></router-outlet>

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { OrderService } from '../services/order.service';
 import { Order } from '../shared/order.model';
+import { DataStorageService } from '../services/data-storage.service';
 
 @Component({
   selector: 'app-order-items',
@@ -11,20 +12,10 @@ import { Order } from '../shared/order.model';
 })
 export class OrderItemsComponent implements OnInit {
   @ViewChild('f') orderForm: NgForm;
-  user: {email: string, firstname: string, lastname: string};
-  // order = {
-  //   coffee: '',
-  //   creamer: '',
-  //   topping: '',
-  //   syrup: '',
-  //   sweetener: '',
-  //   price: 0,
-  //   quantity: 0,
-  //   subTotal: 0
-  // } 
+  user: {email: string, firstname: string, lastname: string, id: string};
   getOrders = [];
   userOrder = [];
-  id: number;
+  id: string;
   submitted = false;
   total = 0;
   price = 4.75;
@@ -32,36 +23,50 @@ export class OrderItemsComponent implements OnInit {
   newOrder;
   getOrder;
   showOrder = false;
+  error: string = null;
 
   constructor(private route: ActivatedRoute,
-        private orderService: OrderService) { }
+        private orderService: OrderService,
+        private dataStorageService: DataStorageService) { }
 
   ngOnInit(): void {
       this.user = {
         email: this.route.snapshot.params['email'],
         firstname: this.route.snapshot.params['firstname'],
-        lastname: this.route.snapshot.params['lastname']
+        lastname: this.route.snapshot.params['lastname'],
+        id: this.route.snapshot.params['id']
       }
+      this.error = null;
+      this.dataStorageService.autoLogin();
   }
   
   onSubmit(){
     this.submitted = true;
     this.viewOrder = true;
-      this.newOrder = new Order(this.user.email, this.orderForm.value.coffee, this.orderForm.value.creamer, this.orderForm.value.topping, this.orderForm.value.syrup, this.orderForm.value.sweetener, this.price, Number(this.orderForm.value.quantity));
+      this.newOrder = new Order(this.orderForm.value.coffee, this.orderForm.value.creamer, this.orderForm.value.topping, this.orderForm.value.syrup, this.orderForm.value.sweetener, this.price, Number(this.orderForm.value.quantity), this.user.id);
       this.orderService.addOrder(this.newOrder);
+      this.dataStorageService.storeOrder(this.newOrder)
+        .subscribe(data => {
+          console.log(data);
+        },
+          errorMessage => {
+          console.log(errorMessage);
+          this.error = errorMessage;
+        });
   }
 
   onViewOrder(){
     this.submitted = false;
     this.showOrder = true;
-    this.getOrders = this.orderService.getOrders();
-    
-    for(var i = 0; i < this.getOrders.length; i++){
-      if(this.getOrders[i].email === this.user.email){
-          this.getOrder = new Order(this.getOrders[i].email, this.getOrders[i].coffee, this.getOrders[i].creamer,
-            this.getOrders[i].topping, this.getOrders[i].syrup, this.getOrders[i].sweetener, this.getOrders[i].price, this.getOrders[i].quantity);
-          this.userOrder.push(this.getOrder);
-      }
-}
+    this.dataStorageService.fetchOrders(this.user.id)
+      .subscribe(data => {
+        console.log(data);
+        this.orderService.setOrder(data);
+        this.getOrders = this.orderService.getOrders();
+      },
+      errorMessage => {
+        console.log(errorMessage);
+        this.error = errorMessage;
+      });
   }
 }

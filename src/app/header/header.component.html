@@ -5,7 +5,9 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+                <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a style="cursor: pointer" (click)="onLogOut()">Log Out</a></li>
+             
+                <!-- <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li> -->
             </ul>
         </div> 
         <router-outlet></router-outlet> 
