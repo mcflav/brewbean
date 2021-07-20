@@ -2,6 +2,9 @@
 <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <div class="alert alert-danger" *ngIf="error">
+            <p>{{ error }}</p>
+        </div>
         <form (ngSubmit)="onSubmit()" #f="ngForm">
             <h1>Welcome {{ user.firstname }} {{ user.lastname }}</h1>
             <h2>Order Form</h2>
@@ -155,14 +158,14 @@
               [disabled]="!viewOrder">View Order
             </button> 
           </div>
-          </form>
+        </form>
           <div class="row">
             <div class="col-xs-12">
-              <h3 *ngIf="submitted">Thank you for Order!!</h3>
+              <h3 *ngIf="submitted && !error">Thank you for Order!!</h3>
               <hr>
               <div *ngIf="showOrder">
                 <h4>Order Summary</h4>
-                <div *ngFor="let order of userOrder">
+                <div *ngFor="let order of getOrders">
                     <hr>
                     <p>Coffee: {{ order.coffee }}</p>
                     <p>Quantity: {{ order.quantity }}</p>

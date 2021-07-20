@@ -1,4 +1,5 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { DataStorageService } from '../services/data-storage.service';
 
 @Component({
     selector: 'app-header',
@@ -6,6 +7,15 @@ import { Component, Output, EventEmitter } from "@angular/core";
     styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+    constructor(private dataStorageService: DataStorageService){}
+
+    ngOnInit(){
+
+    }
+
+    onLogOut(){
+        this.dataStorageService.logOut();
+    }
     
 }

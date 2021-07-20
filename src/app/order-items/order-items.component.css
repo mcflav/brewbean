@@ -2,6 +2,11 @@ h1,h2{
     color: blue;
 }
 
+h3,h4{
+    color: blue;
+    font-size: xx-large;
+}
+
 .form-group{
     
     display: flex;
@@ -48,5 +53,9 @@ label{
 #user-data{
     border: 1px solid black;
     padding: 2px;
+}
+
+p{
+    color: blue;
 }
 
