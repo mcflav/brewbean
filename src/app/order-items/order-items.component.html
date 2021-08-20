@@ -2,9 +2,10 @@
 <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <div class="alert alert-danger" *ngIf="error">
+        <!-- <div class="alert alert-danger" *ngIf="error">
             <p>{{ error }}</p>
-        </div>
+        </div> -->
+        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
         <form (ngSubmit)="onSubmit()" #f="ngForm">
             <h1>Welcome {{ user.firstname }} {{ user.lastname }}</h1>
             <h2>Order Form</h2>
@@ -94,11 +95,11 @@
                         required
                         name="topping"
                         #toppings="ngModel">
-                        <option value="none">No Topping</option>
+                        <option value="none">No T opping</option>
                         <option value="caramel">Caramel Drizzle</option>
                         <option value="mocha">Mocha Drizzle</option>
                         <option value="whipped">Whipped Cream</option>
-                    </select>
+                    </select> 
                     <span class="help-block" *ngIf="!toppings.valid && toppings.touched">Please Select A Topping!</span>               
                 </div>
             </section>

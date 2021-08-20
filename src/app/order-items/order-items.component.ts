@@ -69,4 +69,8 @@ export class OrderItemsComponent implements OnInit {
         this.error = errorMessage;
       });
   }
+
+  onHandleError(){
+    this.error = null;
+  }
 }

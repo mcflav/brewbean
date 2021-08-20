@@ -17,6 +17,7 @@ import { OrderItemsComponent } from './order-items/order-items.component';
 import { DataStorageService } from './services/data-storage.service';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     LoginComponent,
     AboutComponent,
     OrderItemsComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
