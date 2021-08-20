@@ -39,13 +39,14 @@ export class RegisterComponent {
         }       
       },
       errorMessage => {
-        console.log(errorMessage);
         this.error = errorMessage;
       });
    }
 
    
   onSubmit(){
+    this.error = null;
+    this.emailExsist = false;
     this.user.password = this.registerForm.value.password;
     this.user.confirmPassword = this.registerForm.value.confirmPassword;
     this.user.email = this.registerForm.value.email;
@@ -58,8 +59,7 @@ export class RegisterComponent {
              this.emailExsist = true;
           }
     }
-    console.log(this.emailExsist);
-    
+        
     if(this.user.password !== this.user.confirmPassword){
       this.passMatch = false;
     }else {
@@ -77,7 +77,13 @@ export class RegisterComponent {
                   console.log(errorMessage);
                   this.error = errorMessage;
                 });
+        } else if(this.emailExsist === true){
+            this.error = "This email already exsist in the system. Please choose a different email address.";
         }
     }    
+  }
+
+  onHandleError(){
+    this.error = null;
   }
 }

@@ -19,7 +19,7 @@ interface StoreUserResponseData{
 
 interface ValidateUserResponseData {
     auth: boolean,
-    token: string,
+    token: string
 }
 
 interface StoreOrderResponseData{
@@ -80,7 +80,6 @@ export class DataStorageService {
     }
 
     fetchOrders(userId: string){
-        console.log(userId);
         return this.http.post('https://warm-dusk-21815.herokuapp.com/api/v1/orders/getOrder', 
             {
                 user: userId
@@ -91,7 +90,7 @@ export class DataStorageService {
     validateUser(user: UserLogin){
         const body = user;
         return this.http.post<ValidateUserResponseData>('https://warm-dusk-21815.herokuapp.com/api/v1/authentication',
-            body).pipe(catchError(this.handleError),
+            body).pipe(catchError(this.authenticationError),
             tap(resData => {
                 this.handleAuthentication(
                     resData.auth,
@@ -149,16 +148,23 @@ export class DataStorageService {
             token,
             expirationDate
         );
+
         this.user.next(user);
         this.autoLogout(86400 * 1000);
-
         localStorage.setItem('userData', JSON.stringify(user));
     }
 
     private handleError(errorRes: HttpErrorResponse){
+        const errorMessage = errorRes.error;
+        return throwError(errorMessage);
+    }
+
+    private authenticationError(errorRes: HttpErrorResponse){
         let errorMessage;
-        console.log(errorRes.error);
-        errorMessage = 'An error occurred.';
+        if(errorRes.status === 400 || (errorRes.status === 401 && errorRes.error.token !== null) ||
+        (errorRes.status === 401 && errorRes.error.token === null)){
+            errorMessage = "Invalid Username or Password.";
+        }
         return throwError(errorMessage);
     }
 }

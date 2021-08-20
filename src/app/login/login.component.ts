@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
         }       
       },
       errorMessage => {
-        console.log(errorMessage);
         this.error = errorMessage;
       });
   }
@@ -53,17 +52,11 @@ export class LoginComponent implements OnInit {
        this.dataStorageService.validateUser({email: this.login.email, password: this.login.password})
           .subscribe(data => {
             this.isLoading = false;
-            console.log(data.auth);
             this.error = null;
             this.isUserValid(data.auth);
           },
           errorMessage => {
-            console.log(errorMessage.auth);
-            if(errorMessage.auth === false){
-              this.error = "Invalid email or password";
-            } else {
-              this.error = errorMessage;
-            }            
+            this.error = errorMessage;
             this.isLoading = false;
           });
   }
@@ -76,16 +69,19 @@ export class LoginComponent implements OnInit {
           this.users = this.usersService.getUsers();
           for(var i = 0; i < this.users.length; i++){
               if(this.users[i].email === this.login.email) {
-                console.log("id " + this.users[i]._id);
                   this.id = this.users[i]._id;
                   this.firstname = this.users[i].firstname;
                   this.lastname = this.users[i].lastname;
               }
           } 
          this.router.navigate(['../order-items', this.login.email, this.firstname, this.lastname, this.id], {relativeTo: this.route})
-      }else{
-          this.validLogin = false;
-          this.showInvalidMessage = true;
-      }
+      // }else{
+      //     this.validLogin = false;
+      //     this.showInvalidMessage = true;
+       }
+  }
+
+  onHandleError(){
+    this.error = null;
   }
 }

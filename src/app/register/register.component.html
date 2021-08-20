@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <div class="alert alert-danger" *ngIf="error">
+      <!-- <div class="alert alert-danger" *ngIf="error">
           <p>{{ error }}</p>
-      </div>
+      </div> -->
+      <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
       <form (ngSubmit)="onSubmit()" #f="ngForm">
         <div
           class="form-group"
@@ -22,7 +23,6 @@
             email
             #email="ngModel">
             <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
-            <span *ngIf="emailExsist">This email account is already registered. Please use a different email address.</span>
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
