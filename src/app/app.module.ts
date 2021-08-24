@@ -7,30 +7,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { AboutComponent } from './about/about.component';
-import { UsersService } from './services/users.service';
-import { OrderService } from './services/order.service';
-import { OrderItemsComponent } from './order-items/order-items.component';
-import { DataStorageService } from './services/data-storage.service';
-import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
-import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { AlertComponent } from './alert/alert.component';
+import { RegisterModule } from './register/register.module';
+import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
+import { OrderItemModule } from './order-items/order-items.module';
+import { CoreModule } from './core.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
-    RegisterComponent,
-    LoginComponent,
-    AboutComponent,
-    OrderItemsComponent,
-    LoadingSpinnerComponent,
-    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +26,13 @@ import { AlertComponent } from './alert/alert.component';
     ShowHidePasswordModule,
     AppRoutingModule,
     HttpClientModule,
+    RegisterModule,
+    HomeModule,
+    LoginModule,
+    OrderItemModule,
+    CoreModule,
+    SharedModule
   ],
-  providers: [UsersService, OrderService, DataStorageService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
