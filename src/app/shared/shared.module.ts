@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
 import { AboutComponent } from "../about/about.component";
 import { AlertComponent } from "../alert/alert.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
@@ -19,7 +18,8 @@ import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.compo
     exports: [
         AboutComponent,
         LoadingSpinnerComponent,
-        AlertComponent
+        AlertComponent,
+        CommonModule
     ],
 
     entryComponents: [AlertComponent]
