@@ -12,7 +12,7 @@ import { RegisterComponent } from "./register.component";
     imports: [
         FormsModule,
         SharedModule,
-        RouterModule.forChild([{ path: 'register', component: RegisterComponent }])
+        RouterModule.forChild([{ path: '', component: RegisterComponent }])
     ]
 })
 export class RegisterModule{}

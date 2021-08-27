@@ -7,13 +7,13 @@ import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
     declarations: [
-        OrderItemsComponent
+        OrderItemsComponent,
     ],
 
     imports: [
         FormsModule,
         SharedModule,
-        RouterModule.forChild([{ path: 'order-items/:email/:firstname/:lastname/:id', component: OrderItemsComponent,
+        RouterModule.forChild([{ path: '', component: OrderItemsComponent,
         canActivate: [AuthGuard] }])
 
     ]

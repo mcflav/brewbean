@@ -10,7 +10,7 @@ import { AboutComponent } from "./about.component";
 
     imports: [
         FormsModule,
-        RouterModule.forChild([{ path: 'about', component: AboutComponent }])
+        RouterModule.forChild([{ path: '', component: AboutComponent }])
     ]
 })
 export class AboutModule{}

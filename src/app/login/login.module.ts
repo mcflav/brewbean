@@ -12,7 +12,7 @@ import { LoginComponent } from "./login.component";
     imports: [
         FormsModule,
         SharedModule,
-        RouterModule.forChild([{ path: 'login', component: LoginComponent },])
+        RouterModule.forChild([{ path: '', component: LoginComponent },])
         
     ],
 

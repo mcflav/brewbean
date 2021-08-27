@@ -1,12 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { AboutComponent } from "../about/about.component";
 import { AlertComponent } from "../alert/alert.component";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 
 @NgModule({
     declarations: [
-        AboutComponent,
         LoadingSpinnerComponent,
         AlertComponent
     ],
@@ -16,7 +14,6 @@ import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.compo
     ],
 
     exports: [
-        AboutComponent,
         LoadingSpinnerComponent,
         AlertComponent,
         CommonModule
