@@ -1,13 +1,31 @@
-a:active{
-    color: blue;
+#presentation{
+    color: pink;
+}
+
+.menu{
+    border: solid 7px brown;
+    padding-bottom: 50px;
+    padding-right: 10px;
+    /* background-color: lightblue; */
+    
+}
+
+.nav navbar-nav navbar-right{
+    margin-left: 5px;
 }
 
 #links{
-    color:red;
-}
+    color:brown;
+} 
 
 #title{
-    color: #6E2C00;
+    margin-left: 5px;
+    padding-top: 20px;
+    color: brown;
 }
+
+/* #title{
+    color: #6E2C00;
+} */
 
 

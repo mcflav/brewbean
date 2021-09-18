@@ -1,20 +1,61 @@
 h2{
-    color: #FB2C00;
-    margin-top: 100px;
+    margin-top:0px;
+    text-align: center;
+    background-color:khaki;
+    padding-bottom: 5px;
+    color: brown;
+    padding-left: 25px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+}
+
+#user-data{
+    text-align: center;
+    margin: 0 auto;
+}
+
+span{
+    color: red;
 }
 
 label{
-    color:blue;
-}
-
-show-hide-password{
-    color:blue;
+    color:brown;
+    background-color: khaki;
 }
 
 .form-group{
     width: 200px;
+    
 }
 
-input.ng-invalid.ng-touched{
-    border: 1px solid red;
+input{
+    border: 1px solid brown;
+    
+}
+
+input.ng-invalid.ng-touched {
+    border: 3px solid red;
+}
+
+body{
+    background-image: url("../../assets/login.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 25px;
+    margin-top: -10px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+    border-bottom: solid 5px brown;
+}
+
+.container{
+    margin: 0 auto;
+    padding-bottom: 315px;
+    margin-top: 0px;
+}
+
+show-hide-password{
+    color:blue;
+   
 }

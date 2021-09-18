@@ -1,10 +1,31 @@
-h1,h2{
-    color: blue;
+h2{
+    margin-top:0px;
+    text-align: center;
+    background-color:khaki;
+    padding-bottom: 5px;
+    color: brown;
+    padding-left: 25px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+}
+
+span{
+    color:red;
+}
+
+button{
+    margin-left:300px;
 }
 
 h3,h4{
     color: blue;
     font-size: xx-large;
+    background-color: khaki;
+}
+
+.summary{
+    color: blue;
+    background-color: khaki;
 }
 
 .form-group{
@@ -14,12 +35,16 @@ h3,h4{
     flex-direction:row;
 }
 
+select{
+    color: brown;
+}
+
 select.ng-invalid.ng-touched {
-    border: 1px solid red;
+    border: 3px solid red;
  }
 
  input.ng-invalid.ng-touched {
-    border: 1px solid red;
+    border: 3px solid red;
  }
 
 #addOnSection{
@@ -27,7 +52,7 @@ select.ng-invalid.ng-touched {
 }
 
 #syrupSection{
-    margin-left: 50px;
+    margin-left: 5px;
 }
 
 #coffeeSection{
@@ -35,15 +60,17 @@ select.ng-invalid.ng-touched {
 }
 
 #sweetSection{
-    margin-right: 100px;
+    margin-right: 125px;
 }
 
 input{
     padding: 5px;
+    color: brown;
 }
 
 label{
     padding: 5px;
+    color:brown;
 }
 
 #quantity{
@@ -58,4 +85,23 @@ label{
 p{
     color: blue;
 }
+
+body{
+    background-image: url("../../assets/orderitems.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 25px;
+    margin-top: -10px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+    border-bottom: solid 5px brown;
+}
+
+.container{
+    margin: 0 auto;
+    padding-bottom: 115px;
+    margin-top: 0px;
+}
+
 

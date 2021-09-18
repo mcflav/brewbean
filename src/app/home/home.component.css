@@ -1,19 +1,30 @@
 h1{
+    margin-top:0px;
     text-align: center;
-    margin-top: 100px;
-    color: #FB2C00
+    background-color:khaki;
+    padding-bottom: 5px;
+    color: brown;
+    padding-left: 25px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+    /* border-bottom: solid 1px brown; */
 }
 
-.coffeePic{
-    text-align: center;
+body{
+    background-image: url("../../assets/home.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 25px;
+    margin-top: -10px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+    border-bottom: solid 5px brown;
+    
 }
 
-/* .row{
-    background-color: #5DADE2;
-    opacity: 0.9;
-} */
-
-
-
-
-
+.container{
+    margin: 0 auto;
+    padding-bottom: 602px;
+    margin-top: 0px;
+}
