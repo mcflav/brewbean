@@ -1,89 +1,89 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <!-- <div class="alert alert-danger" *ngIf="error">
-          <p>{{ error }}</p>
-      </div> -->
-      <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
-      <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <div
-          class="form-group"
-          id="user-data">
-        <h2>Registration</h2>
-        <hr>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            ngModel
-            name="email"
-            required
-            email
-            #email="ngModel">
-            <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            ngModel
-            name="password"
-            required
-            #password="ngModel">
-            <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a password!</span>
-        </div>
-        <div class="form-group">
-          <label for="confirmPassword"> Confirm Password:</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            class="form-control"
-            ngModel
-            name="confirmPassword"
-            required
-            #confirmPassword="ngModel">
-            <span class="help-block" *ngIf="!confirmPassword.valid && confirmPassword.touched">Please confirm your password!</span>
-            <span *ngIf="!passMatch">Your passwords do not match! Please re-enter them.</span>
-        </div>
-        <div class="form-group">
-          <label for="firstname">First Name:</label>
-          <input
-            type="text"
-            id="firstname"
-            class="form-control"
-            ngModel
-            name="firstname"
-            required
-            #firstname="ngModel">
-            <span class="help-block" *ngIf="!firstname.valid && firstname.touched">Please enter your firstname!</span>
-        </div>
-        <div class="form-group">
-          <label for="lastname">Last Name:</label>
-          <input
-            type="text"
-            id="lastname"
-            class="form-control"
-            ngModel
-            name="lastname"
-            required
-            #lastname="ngModel">
-            <span class="help-block" *ngIf="!lastname.valid && lastname.touched">Please enter your lastname!</span>
-        </div>
-        </div>
-          <hr>
-          <div class="form-group">
-            <button
-              class="btn btn-primary"
-              type="submit"
-              [disabled]="!f.valid">Register
-            </button> 
+<header>
+  <h2>Registration</h2>
+</header>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()" style="color: red"></app-alert>
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+          <div
+            class="form-group"
+            id="user-data">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                ngModel
+                name="email"
+                required
+                email
+                #email="ngModel">
+                <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                ngModel
+                name="password"
+                required
+                #password="ngModel">
+                <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a password!</span>
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword"> Confirm Password:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                class="form-control"
+                ngModel
+                name="confirmPassword"
+                required
+                #confirmPassword="ngModel">
+                <span class="help-block" *ngIf="!confirmPassword.valid && confirmPassword.touched">Please confirm your password!</span>
+                <span *ngIf="!passMatch">Your passwords do not match! Please re-enter them.</span>
+            </div>
+            <div class="form-group">
+              <label for="firstname">First Name:</label>
+              <input
+                type="text"
+                id="firstname"
+                class="form-control"
+                ngModel
+                name="firstname"
+                required
+                #firstname="ngModel">
+                <span class="help-block" *ngIf="!firstname.valid && firstname.touched">Please enter your firstname!</span>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Last Name:</label>
+              <input
+                type="text"
+                id="lastname"
+                class="form-control"
+                ngModel
+                name="lastname"
+                required
+                #lastname="ngModel">
+                <span class="help-block" *ngIf="!lastname.valid && lastname.touched">Please enter your lastname!</span>
+            </div>
+            <br>
+            <div class="form-group">
+             <button
+               class="btn btn-primary"
+               type="submit"
+               [disabled]="!f.valid">Register
+             </button> 
+            </div>
           </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+  </body>
 

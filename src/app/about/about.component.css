@@ -1,16 +1,45 @@
 #about {
     margin-left: 50px;
     margin-right: 50px;
-    border: 2px solid black;
+    border: 2px solid brown;
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 20px;
+    color: brown;
+    background-color: khaki;
 }
 
-h1{
-    margin-top: 100px;
+h2{
+    margin-top:0px;
     text-align: center;
-    color: #FB2C00;
+    background-color:khaki;
+    padding-bottom: 5px;
+    color: brown;
+    padding-left: 25px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+}
+
+body{
+    background-image: url("../../assets/about.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 25px;
+    margin-top: -10px;
+    border-left: solid 5px brown;
+    border-right: solid 5px brown;
+    border-bottom: solid 5px brown;
+}
+
+.container{
+    margin: 0 auto;
+    padding-bottom: 340px;
+    margin-top: 0px;
+}
+
+.us{
+    margin-top: 150px;
 }

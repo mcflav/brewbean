@@ -1,46 +1,44 @@
-<!-- <app-header></app-header> -->
+<!-- <app-header></app-header>  -->
+<header>
+  <h2>Welcome {{ user.firstname }} {{ user.lastname }} <br> Order Form</h2>
+</header>
+<body>
 <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <!-- <div class="alert alert-danger" *ngIf="error">
-            <p>{{ error }}</p>
-        </div> -->
-        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert>
+        <app-alert [message]="error" *ngIf="error" (close)="onHandleError()" style="color: red"></app-alert>
         <form (ngSubmit)="onSubmit()" #f="ngForm">
-            <h1>Welcome {{ user.firstname }} {{ user.lastname }}</h1>
-            <h2>Order Form</h2>
-            <hr>
-            
+          <br>
           <div
             class="form-group"
             id="user-data"
-            >
-            <hr>
-            <section id="coffeeSection">
-                <div id="coffee" class="form-group">
-                    <label for="coffee">coffee - $4.75:</label>
-                    <select
-                        id="coffee"
-                        class="form-control"
-                        ngModel
-                        required
-                        name="coffee"
-                        #coffee="ngModel">
-                        <option value="Blonde Roast">Blonde Roast</option>
-                        <option value="Caffe Misto">Caffe Misto</option>
-                        <option value="Dark Roast">Dark Roast</option>
-                        <option value="Dark Roast Decaf">Dark Roast Decaf</option>
-                        <option value="Columbia">Columbia</option>
-                        <option value="Breakfast Blend">Breakfast Blend</option>
-                        <option value="breakfast Blend Decaf">Breakfast Blend Decaf</option>
-                        <option value="Premium">Premium</option>
-                        </select>  
-                        <span class="help-block" *ngIf="!coffee.valid && coffee.touched">Please Select A Coffee!</span>            
-                </div>
-                <hr>
-                <div id= "quantity" class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input
+          >
+          <br>
+          <section id="coffeeSection">
+              <div id="coffee" class="form-group">
+                  <label for="coffee">coffee - $4.75:</label>
+                  <select
+                      id="coffee"
+                      class="form-control"
+                      ngModel
+                      required
+                      name="coffee"
+                      #coffee="ngModel">
+                      <option value="Blonde Roast">Blonde Roast</option>
+                      <option value="Caffe Misto">Caffe Misto</option>
+                      <option value="Dark Roast">Dark Roast</option>
+                      <option value="Dark Roast Decaf">Dark Roast Decaf</option>
+                      <option value="Columbia">Columbia</option>
+                      <option value="Breakfast Blend">Breakfast Blend</option>
+                      <option value="breakfast Blend Decaf">Breakfast Blend Decaf</option>
+                      <option value="Premium">Premium</option>
+                  </select>  
+                      <span class="help-block" *ngIf="!coffee.valid && coffee.touched">Please Select A Coffee!</span>            
+              </div>
+              <br>
+              <div id= "quantity" class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input
                     type="number"
                     id="quantity"
                     class="form-control"
@@ -49,9 +47,9 @@
                     ngModel
                     name="quantity"
                     #quantity="ngModel">
-                    <span class="help-block" *ngIf="!quantity.valid && quantity.touched">Please enter a quantity!</span>
-                </div>
-            </section>
+                  <span class="help-block" *ngIf="!quantity.valid && quantity.touched">Please enter a quantity!</span>
+              </div>
+          </section>
             <hr>
             <section id="addOnSection">
                 <div id="creamers" class="form-group">
@@ -85,7 +83,7 @@
                     </select>
                     <span class="help-block" *ngIf="!creamers.valid && creamers.touched">Please Select A Creamer!</span>               
                 </div>
-                <hr>
+                <br>
                 <div class="form-group">
                     <label for="toppings">Toppings:</label>
                     <select
@@ -143,7 +141,7 @@
                 </div>
             </section>
           </div>
-          <hr>
+          <br>
           <div class="form-group">
             <button
               class="btn btn-primary"
@@ -163,10 +161,10 @@
           <div class="row">
             <div class="col-xs-12">
               <h3 *ngIf="submitted && !error">Thank you for Order!!</h3>
-              <hr>
+              <br>
               <div *ngIf="showOrder">
                 <h4>Order Summary</h4>
-                <div *ngFor="let order of getOrders">
+                <div class="summary" *ngFor="let order of getOrders">
                     <hr>
                     <p>Coffee: {{ order.coffee }}</p>
                     <p>Quantity: {{ order.quantity }}</p>
@@ -182,3 +180,4 @@
       </div>
     </div>
   </div>
+  </body>
